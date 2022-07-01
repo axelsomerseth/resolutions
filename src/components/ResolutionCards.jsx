@@ -31,7 +31,7 @@ function ResolutionCards() {
     );
 
     // runs on un-mount
-    return function cleanup() {
+    return function cleanUp() {
       unsubscribe();
     };
   }, []);

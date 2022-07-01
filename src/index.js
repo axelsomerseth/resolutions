@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import Resolutions from "./components/Resolutions";
 import NotFoundRoute from "./routes/NotFoundRoute";
-import ProfileRoute from "./routes/ProfileRoute";
+import Profile from "./components/Profile";
 import EditResolution from "./components/EditResolution";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -19,7 +19,7 @@ root.render(
       <Route path="/" element={<App />}>
         <Route index path="resolutions" element={<Resolutions />} />
         <Route path="resolutions/:resolutionId" element={<EditResolution />} />
-        <Route path="profile" element={<ProfileRoute />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="*" element={<NotFoundRoute />} />
       </Route>
     </Routes>

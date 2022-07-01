@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { getAuthState } from "../services/auth";
+import React, { useContext } from "react";
+import { UserContext } from "../App";
 
-function ProfileRoute() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    getAuthState((user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        // console.log(user);
-        // const uid = user.uid;
-        setUser(() => user);
-      } else {
-        setUser(() => null);
-      }
-    });
-  });
+function Profile() {
+  const { user } = useContext(UserContext);
 
   const getUserProps = (user) => {
     return {
@@ -52,4 +38,4 @@ function ProfileRoute() {
   );
 }
 
-export default ProfileRoute;
+export default Profile;

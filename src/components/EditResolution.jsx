@@ -84,8 +84,8 @@ function EditResolution() {
               <div className="mb-3">
                 <label htmlFor="resolutionTypeSelect">Resolution Type</label>
                 <select
-                  id="resolutionType"
-                  name="resolutionType"
+                  id="resolutionTypeSelect"
+                  name="resolutionTypeSelect"
                   className="form-select"
                   aria-label="Select Resolution Type"
                   value={resolutionType}

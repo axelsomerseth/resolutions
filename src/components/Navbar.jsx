@@ -1,44 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginModal from "../components/LoginModal";
-import SignupModal from "../components/SignupModal";
-import { getAuthState, logOut } from "../services/auth";
+import LoginModal from "./LoginModal";
+import SignupModal from "./SignupModal";
+import { logOut } from "../services/auth";
+import { UserContext } from "../App";
 
 function Navbar() {
-  const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const unSubscribeAuth = getAuthState((user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        // const uid = user.uid;
-        // console.log(user);
-        setLoggedIn(() => true);
-      } else {
-        // User is signed out
-        setLoggedIn(() => false);
-      }
-    });
-
-    // Unsubscribing when unmounting this component
-    return function cleanup() {
-      unSubscribeAuth();
-    };
-  }, []);
+  const { user } = useContext(UserContext);
 
   const handleLogOut = () => {
     logOut()
       .then(() => {
         // Sign-out successful.
-        // console.log("Log out successful");
         navigate("/resolutions", { replace: true });
       })
       .catch((error) => {
         // An error happened.
-        console.error(error.code);
-        console.error(error.message);
+        console.error(error);
       });
   };
 
@@ -63,7 +42,7 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto"></ul>
           <ul className="navbar-nav ms-auto">
-            {loggedIn ? (
+            {user ? (
               <>
                 <li className="nav-item">
                   <Link to="/profile" className="nav-link active">
