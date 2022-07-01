@@ -3,6 +3,6 @@ import Footer from "./Footer";
 
 test("renders footer with text", () => {
   render(<Footer />);
-  const textFromFooter = screen.getByText(/Made with/i);
-  expect(textFromFooter).toBeInTheDocument();
+  const spanElem = screen.getByText(/Made with/i);
+  expect(spanElem).toBeInTheDocument();
 });
