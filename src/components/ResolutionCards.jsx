@@ -36,12 +36,6 @@ function ResolutionCards() {
     };
   }, []);
 
-  // const handleEdit = (event) => {
-  // const docId = event.target.name;
-  // console.log(docId);
-  // Open a modal
-  // };
-
   const handleDelete = (event) => {
     const docId = event.target.name;
     deleteResolution(docId)
