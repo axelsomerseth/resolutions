@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./routes/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   let navigate = useNavigate();
@@ -18,19 +19,7 @@ function App() {
       <main>
         <Outlet />
       </main>
-      <footer>
-        <nav className="navbar fixed-bottom navbar-light bg-light">
-          <div className="container-fluid justify-content-center">
-            <div className="row">
-              <div className="col">
-                <span className="text-muted" style={{ fontSize: "13px" }}>
-                  Made with &#x1FAF6;.
-                </span>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </footer>
+      <Footer />
     </>
   );
 }
