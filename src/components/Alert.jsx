@@ -8,7 +8,7 @@ function Alert(props) {
 
   const cleanMessageFromFirebase = (message) => {
     const matches = message.match(/\([\w/-]+\)/);
-    const code = matches.length ? matches[0] : "";
+    const code = matches && matches.length ? matches[0] : "";
     console.log(code);
     switch (code) {
       case "(auth/invalid-email)":
