@@ -1,3 +1,8 @@
+/**
+ * @param {Date} d Date object
+ * @return {string} e.g. "20 seconds ago"
+ */
+
 const timeAgo = (d) => {
   const diff = (new Date() - d) / 1000;
   if (diff < 60) {
@@ -20,6 +25,12 @@ const timeAgo = (d) => {
   return v + " year" + (v === 1 ? "" : "s") + " ago";
 };
 
+/**
+ *
+ * @param {string} hex Hex color representation e.g. "#000000"
+ * @param {number} alpha Opacity e.g. 0.7 for 70%
+ * @returns {string} e.g. "rgba(...values, alpha)" or "rgb(...values)"
+ */
 function hexToRGB(hex, alpha) {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
