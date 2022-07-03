@@ -25,8 +25,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <Link to="/" className="navbar-brand">
-          <span>&#x1F3AF;</span>
-          <span>&nbsp;&nbsp;Resolutions</span>
+          <span>&#x1F3AF;&nbsp;&nbsp;Resolutions</span>
         </Link>
         <button
           className="navbar-toggler"
@@ -80,8 +79,12 @@ function Navbar() {
           </ul>
         </div>
       </div>
-      <LoginModal />
-      <SignupModal />
+      {!user && (
+        <>
+          <LoginModal />
+          <SignupModal />
+        </>
+      )}
     </nav>
   );
 }
