@@ -9,9 +9,9 @@ function Resolutions() {
   return (
     <>
       <div className="container">
-        <div className="row mt-3">
-          <div className="col d-flex justify-content-center">
-            {user && (
+        {user ? (
+          <div className="row mt-3">
+            <div className="col d-flex justify-content-center">
               <button
                 className="btn btn-primary"
                 data-bs-toggle="modal"
@@ -19,17 +19,18 @@ function Resolutions() {
               >
                 &#x1F195; Add Resolution
               </button>
-            )}
-            {user && <AddResolution />}
+              <AddResolution />
+            </div>
           </div>
-        </div>
-        <div className="row mt-2"></div>
+        ) : (
+          <></>
+        )}
         {user ? (
           <div className="row row-cols g-3 mt-3">
             <ResolutionCards />
           </div>
         ) : (
-          <div className="row">
+          <div className="row mt-3">
             <div className="col d-flex justify-content-center">
               <h1 className="h1">Please log in to use the app.</h1>
             </div>
