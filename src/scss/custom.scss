@@ -1,0 +1,23 @@
+// Custom.scss
+
+// Include any default variable overrides here (though functions won't be available)
+$theme-colors: (
+  "primary": #3949ab,
+  "secondary": #757575,
+  "success": #2e7d32,
+  "info": #0097a7,
+  "warning": #fdd835,
+  "danger": #d32f2f,
+  "light": #ffffff,
+  "dark": #000000,
+);
+
+// Include all of Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+body {
+  font-family: "Lato", sans-serif !important;
+}

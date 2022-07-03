@@ -9,8 +9,8 @@ import NotFoundRoute from "./routes/NotFoundRoute";
 import Profile from "./components/Profile";
 import EditResolution from "./components/EditResolution";
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.bundle.js";
+import "./scss/custom.scss";
+import "bootstrap/dist/js/bootstrap.bundle";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -80,7 +80,7 @@ function ResolutionCards() {
                     to={`/resolutions/${resolution.id}`}
                     name={resolution.id}
                   >
-                    &#x270F;
+                    &#x1F4DD;
                   </Link>
                   <button
                     className="btn"

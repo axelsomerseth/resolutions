@@ -156,14 +156,14 @@ function AddResolution() {
                 onClick={() => resetForm()}
                 ref={closeButtonRef}
               >
-                Close
+                &#x274C; Close
               </button>
               <button
                 type="button"
                 className="btn btn-primary"
                 onClick={handleSave}
               >
-                Save changes
+                &#x1F4BE; Save
               </button>
             </div>
           </div>

@@ -1,5 +1,6 @@
 {
   "name": "level-3-capstone-project",
+  "description": "Create a data-driven web application and deploy it to a public url.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
