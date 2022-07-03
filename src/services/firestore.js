@@ -18,13 +18,13 @@ import {
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
-const RESOLUTIONS = "resolutions";
+// Get resolutions collection reference (subcollection of users)
+const getResolutionsCollectionRef = (userId) => {
+  return collection(db, `users/${userId}/resolutions`);
+};
 
-// Resolution collection ref
-const resolutionCollection = collection(db, RESOLUTIONS);
-
-const createResolution = (newResolution) => {
-  return addDoc(resolutionCollection, {
+const createResolution = (userId, newResolution) => {
+  return addDoc(getResolutionsCollectionRef(userId), {
     resolutionType: newResolution.resolutionType,
     title: newResolution.title,
     icon: newResolution.icon,
@@ -35,22 +35,25 @@ const createResolution = (newResolution) => {
   });
 };
 
-const readResolution = (docId) => {
-  const docRef = doc(db, RESOLUTIONS, docId);
+const readResolution = (userId, docId) => {
+  const docRef = doc(db, `users/${userId}/resolutions`, docId);
   return getDoc(docRef);
 };
 
-const listResolutions = () => {
-  return getDocs(resolutionCollection);
+const listResolutions = (userId) => {
+  return getDocs(getResolutionsCollectionRef(userId));
 };
 
-const listResolutionsRealtime = (onNext, onError) => {
-  const q = query(collection(db, RESOLUTIONS), orderBy("createdAt", "desc"));
+const listResolutionsRealtime = (userId, onNext, onError) => {
+  const q = query(
+    getResolutionsCollectionRef(userId),
+    orderBy("createdAt", "desc")
+  );
   return onSnapshot(q, onNext, onError);
 };
 
-const updateResolution = (docId, updatedResolution) => {
-  const docRef = doc(db, RESOLUTIONS, docId);
+const updateResolution = (userId, docId, updatedResolution) => {
+  const docRef = doc(db, `users/${userId}/resolutions`, docId);
   return updateDoc(docRef, {
     resolutionType: updatedResolution.resolutionType,
     title: updatedResolution.title,
@@ -61,8 +64,8 @@ const updateResolution = (docId, updatedResolution) => {
   });
 };
 
-const deleteResolution = (docId) => {
-  const docRef = doc(db, RESOLUTIONS, docId);
+const deleteResolution = (userId, docId) => {
+  const docRef = doc(db, `users/${userId}/resolutions`, docId);
   return deleteDoc(docRef);
 };
 

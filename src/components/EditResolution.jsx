@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   readResolution,
@@ -7,8 +7,11 @@ import {
 } from "../services/firestore";
 import { logAnalyticsEvent } from "../services/analytics";
 import { timeAgo } from "../utils";
+import { UserContext } from "../App";
 
 function EditResolution() {
+  const { user } = useContext(UserContext);
+
   const [id, setId] = useState("");
   const [resolutionType, setResolutionType] = useState("Quit a bad habit");
   const [title, setTitle] = useState("");
@@ -23,7 +26,7 @@ function EditResolution() {
 
   useEffect(() => {
     setId(() => params.resolutionId);
-    readResolution(params.resolutionId)
+    readResolution(user.uid, params.resolutionId)
       .then((snapshot) => {
         const doc = {
           ...snapshot.data(),
@@ -46,7 +49,7 @@ function EditResolution() {
 
   const handleDelete = () => {
     const docId = id;
-    deleteResolution(docId)
+    deleteResolution(user.uid, docId)
       .then(() => {
         logAnalyticsEvent("resolution_deleted");
         handleBack();
@@ -62,7 +65,7 @@ function EditResolution() {
       color,
       datetime,
     };
-    updateResolution(id, resolutionToUpdate)
+    updateResolution(user.uid, id, resolutionToUpdate)
       .then(() => {
         logAnalyticsEvent("resolution_updated");
         handleBack();

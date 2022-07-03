@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   listResolutionsRealtime,
   deleteResolution,
 } from "../services/firestore";
 import { timeAgo, hexToRGB } from "../utils";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
 function ResolutionCards() {
+  const { user } = useContext(UserContext);
+
   const [resolutions, setResolutions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,6 +17,7 @@ function ResolutionCards() {
   useEffect(() => {
     setIsLoading(() => true);
     const unsubscribe = listResolutionsRealtime(
+      user.uid,
       (querySnapshot) => {
         const resolutionDocs = [];
         querySnapshot.forEach((doc) => {
@@ -34,11 +38,12 @@ function ResolutionCards() {
     return function cleanUp() {
       unsubscribe();
     };
+    // eslint-disable-next-line
   }, []);
 
   const handleDelete = (event) => {
     const docId = event.target.name;
-    deleteResolution(docId)
+    deleteResolution(user.uid, docId)
       .then()
       .catch((error) => console.error(error));
   };

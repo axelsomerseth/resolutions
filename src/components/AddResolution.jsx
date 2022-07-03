@@ -1,8 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { createResolution } from "../services/firestore";
 import { logAnalyticsEvent } from "../services/analytics";
+import { UserContext } from "../App";
 
 function AddResolution() {
+  const { user } = useContext(UserContext);
+
   const [resolutionType, setResolutionType] = useState("Quit a bad habit");
   const [title, setTitle] = useState("");
   const [icon, setIcon] = useState("");
@@ -19,7 +22,7 @@ function AddResolution() {
       color,
       datetime,
     };
-    createResolution(newResolution)
+    createResolution(user.uid, newResolution)
       .then((doc) => {
         logAnalyticsEvent("resolution_created");
         resetForm();
