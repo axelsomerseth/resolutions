@@ -57,7 +57,7 @@ function Navbar() {
               </>
             ) : (
               <>
-                <li>
+                <li className="mb-2 mb-lg-0">
                   <button
                     className="btn btn-success"
                     data-bs-toggle="modal"
