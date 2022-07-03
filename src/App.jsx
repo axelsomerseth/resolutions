@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { onAuthChange } from "./services/auth";
@@ -8,8 +8,6 @@ export const UserContext = createContext();
 
 function App() {
   const [user, setUser] = useState(null);
-
-  let navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribeOnAuth = onAuthChange(
@@ -26,8 +24,6 @@ function App() {
         console.log(error);
       }
     );
-
-    navigate("/resolutions");
 
     // Unsubscribing when unmounting this component
     return function cleanUp() {

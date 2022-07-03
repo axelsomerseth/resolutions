@@ -13,6 +13,7 @@ function ResolutionCards() {
   // runs on mount
   useEffect(() => {
     setIsLoading(() => true);
+    // TODO: get the resolutions realtime only if the user is signed in. Use the User Context defined in App.jsx
     const unsubscribe = listResolutionsRealtime(
       (querySnapshot) => {
         const resolutionDocs = [];

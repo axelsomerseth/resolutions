@@ -35,7 +35,7 @@ function Profile() {
                     {new Date(user.metadata.creationTime).toDateString()}
                   </p>
                   <p className="card-text">
-                    Last login:&nbsp;
+                    Last log in:&nbsp;
                     {new Date(user.metadata.lastSignInTime).toDateString()}
                   </p>
                 </div>

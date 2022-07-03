@@ -41,7 +41,7 @@ function EditResolution() {
   }, []);
 
   const handleBack = () => {
-    navigate("/resolutions");
+    navigate("/");
   };
 
   const handleDelete = () => {

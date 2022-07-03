@@ -13,7 +13,7 @@ function Navbar() {
     logOut()
       .then(() => {
         // Sign-out successful.
-        navigate("/resolutions", { replace: true });
+        navigate("/", { replace: true });
       })
       .catch((error) => {
         // An error happened.
@@ -24,7 +24,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <Link to="/resolutions" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <span>&#x1F3AF;</span>
           <span>&nbsp;&nbsp;Resolutions</span>
         </Link>

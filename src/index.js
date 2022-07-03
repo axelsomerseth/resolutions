@@ -17,7 +17,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index path="resolutions" element={<Resolutions />} />
+        <Route index path="" element={<Resolutions />} />
         <Route path="resolutions/:resolutionId" element={<EditResolution />} />
         <Route path="profile" element={<Profile />} />
         <Route path="*" element={<NotFoundRoute />} />
