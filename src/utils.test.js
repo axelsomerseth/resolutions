@@ -30,15 +30,20 @@ describe("time ago function", () => {
 
   test("should return hours ago", () => {
     const now = new Date();
-    const threeMinutesAgo = now.getTime() - 4 * 60 * 60 * 1000;
-    const answer = timeAgo(new Date(threeMinutesAgo));
+    const fourHoursAgo = now.getTime() - 4 * 60 * 60 * 1000;
+    const answer = timeAgo(new Date(fourHoursAgo));
     expect(answer).toBe("4 hours ago");
   });
 
   test("should return days ago", () => {
+    // Arrange
     const now = new Date();
-    const threeMinutesAgo = now.getTime() - 2 * 24 * 60 * 60 * 1000;
-    const answer = timeAgo(new Date(threeMinutesAgo));
+    const twoDaysAgo = now.getTime() - 2 * 24 * 60 * 60 * 1000;
+
+    // Act
+    const answer = timeAgo(new Date(twoDaysAgo));
+
+    // Assert
     expect(answer).toBe("2 days ago");
   });
 
