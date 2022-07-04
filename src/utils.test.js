@@ -1,13 +1,13 @@
 import { hexToRGB, timeAgo } from "./utils";
 
 describe("hexToRGB fn", () => {
-  test("hexToRGB fn should return a css rgba function", () => {
+  test("should return a css rgba function in string (with opacity)", () => {
     const alpha = 0.5;
     const answer = hexToRGB("#000000", alpha);
     expect(answer).toBe(`rgba(0, 0, 0, ${alpha})`);
   });
 
-  test("hexToRGB fn should return a css rgb function", () => {
+  test("should return a css rgb function", () => {
     const answer = hexToRGB("#000000");
     expect(answer).toBe(`rgb(0, 0, 0)`);
   });
