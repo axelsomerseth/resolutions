@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import ResolutionCards from "./ResolutionCards";
-import AddResolution from "./AddResolution";
-import { UserContext } from "../App";
+import React from "react";
+import ResolutionCards from "./ResolutionCards.jsx";
+import AddResolution from "./AddResolution.jsx";
+import { useAuth } from "./useAuth.jsx";
 
 function Resolutions() {
-  const { user } = useContext(UserContext);
+  const { user } = useAuth();
 
   return (
     <>

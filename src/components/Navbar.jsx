@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
 import { logOut } from "../services/auth";
-import { UserContext } from "../App";
+import { useAuth } from "./useAuth.jsx";
 
 function Navbar() {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user } = useAuth();
 
   const handleLogOut = () => {
     logOut()

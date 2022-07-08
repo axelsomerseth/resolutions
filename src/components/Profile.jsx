@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { UserContext } from "../App";
+import React from "react";
+import { useAuth } from "./useAuth.jsx";
 
 function Profile() {
-  const { user } = useContext(UserContext);
+  const { user } = useAuth();
   const BUST_IN_SILHOUETTE_URL =
     "https://firebasestorage.googleapis.com/v0/b/resolutions-99ef3.appspot.com/o/bust-in-silhouette.png?alt=media&token=b1c2b3dd-449f-4822-a5d6-b9f4a9266665";
 

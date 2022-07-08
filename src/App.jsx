@@ -1,39 +1,12 @@
-import React, { useState, useEffect, createContext } from "react";
+import React from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import { onAuthChange } from "./services/auth";
-
-export const UserContext = createContext();
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
+import { AuthProvider } from "./components/useAuth.jsx";
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribeOnAuth = onAuthChange(
-      (user) => {
-        if (user) {
-          // User is signed in
-          setUser(() => user);
-        } else {
-          // User is signed out
-          setUser(() => null);
-        }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
-    // Unsubscribing when unmounting this component
-    return function cleanUp() {
-      unsubscribeOnAuth();
-    };
-    // eslint-disable-next-line
-  }, []);
-
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <AuthProvider>
       <header>
         <Navbar />
       </header>
@@ -41,7 +14,7 @@ function App() {
         <Outlet />
       </main>
       <Footer />
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }
 

@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import {
   listResolutionsRealtime,
   deleteResolution,
 } from "../services/firestore";
-import { timeAgo, hexToRGB } from "../utils";
 import { Link } from "react-router-dom";
-import { UserContext } from "../App";
+import { timeAgo, hexToRGB } from "../utils";
+import { useAuth } from "./useAuth.jsx";
 
 function ResolutionCards() {
-  const { user } = useContext(UserContext);
+  const { user } = useAuth();
 
   const [resolutions, setResolutions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

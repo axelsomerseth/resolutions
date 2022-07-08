@@ -1,10 +1,10 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef } from "react";
 import { createResolution } from "../services/firestore";
 import { logAnalyticsEvent } from "../services/analytics";
-import { UserContext } from "../App";
+import { useAuth } from "./useAuth";
 
 function AddResolution() {
-  const { user } = useContext(UserContext);
+  const { user } = useAuth();
 
   const [resolutionType, setResolutionType] = useState("Quit a bad habit");
   const [title, setTitle] = useState("");
